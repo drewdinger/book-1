@@ -1,17 +1,34 @@
 {
+  "bio" : {
+
+
+    "education" : [
+        {"name": "Saint Louis University", "timeframe":"2007-2009"},
+        {"name": "United States Marine Corps", "timeframe":"2009-2013"},
+        {"name": "University of Colorado-Bouler",  "timeframe":"2013-2016"}
+    ],
+    "work_experience" : [
+        {"name": "United States Marine Corps",  "title":"Data Network Specialist (0651)", "timeframe": "March 2009-2013", "description": "System Administrator" },
+    {"name": "Laboratory for Atmospheric and Space Physics",  "title":"Data Systems Intern", "timeframe": "June 2013-Present", "description": "I help speed the compression of data coming from live satellite missions." }
+
+    ],
+    "hard_skills" : [
+      {"ability": "Proficient In", "language": ["Javascript ", "C++ ", "Pyhton ", "IDL ", "Leadership Training "]}
+    ]
+  },
   "todos" : {
     "tasks" : [
-    	{"name": "eat", "priority": "high", "type": "necessity", "deadline": "three times a day"},
+        {"name": "eat", "priority": "high", "type": "necessity", "deadline": "three times a day"},
         {"name": "sleep", "priority": "medium", "type": "necessity", "deadline": "everyday at 11pm"},
         {"name": "brush teeth", "priority": "high", "type": "necessity", "deadline": "twice a day"},
         {"name": "attend class", "priority": "high", "type": "academic", "deadline": "4pm"},
         {"name": "meet partners", "priority": "medium", "type": "academic", "deadline": "5pm"},
         {"name": "homework", "priority": "high", "type": "academic", "deadline": "Friday"},
-        {"name": "relax", "priority": "low", "type": "optional", "deadline": "none"},
-        {"name": "sleep", "priority": "high", "type": "necessity", "deadline": "everyday at 11pm"},
+        {"name": "relax", "priority": "medium", "type": "optional", "deadline": "none"},
+        {"name": "sleep", "priority": "low", "type": "necessity", "deadline": "everyday at 11pm"},
         {"name": "work", "priority": "high", "type": "career", "deadline": "3pm"},
         {"name": "call mom", "priority": "low", "type": "necessity", "deadline": "7pm"},
         {"name": "get stoked", "priority": "high", "type": "mostly optional", "deadline": "All day everyday"}
-	]
+        ]
   }
 }
