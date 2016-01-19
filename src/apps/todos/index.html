@@ -8,8 +8,6 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
-
 
     </head>
 
@@ -18,6 +16,16 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
+      <nav>
+        <div class="nav-wrapper teal lighten-2">
+          <ul>
+            <li><a href="high.html">High</a></li>
+            <li><a href="medium.html">Medium</a></li>
+            <li><a href="low.html">Low</a></li>
+            <li><a href="index.html">Index</a></li>
+          </ul>
+        </div>
+      </nav>
 
       <div class="container">
 
@@ -32,14 +40,13 @@
 
       <script>
 
-
-
         // create a firebase reference to the root
-        var ref = new Firebase('https://AlexOkeson-week1.firebaseio.com/')
+        var ref = new Firebase('https://ankr6095-book1.firebaseio.com/')
 
         // read data from the location todos/tasks, only once
-        ref.child('todos/tasks').once('value', function(snapshot){
+        ref.child('todos/tasks').on('value', function(snapshot){
           var tasks = snapshot.val()
+          $("#tasks").empty();
           tasks.forEach(function(task){
             color = ''
             if(task.priority=='high'){
@@ -49,9 +56,10 @@
             } else {
               color = 'green'
             }
-            $('#tasks').append('<div class="row"><div class="col s12 m20"><div class="card ' + color + '"><div class="card-content black-text"><span class="card-title">' + task.name + '</span><p>Priority: ' + task.priority + '<br>Type: ' + task.type + '<br>Deadline: ' + task.deadline + '</p></div></div></div></div>')
+            $('#tasks').append('<div class="row"><div class="col s12 m20"><div class="card ' + color + '"><div class="card-content white-text"><span class="card-title">' + task.name + '</span><p><i class="tiny material-icons">assessment</i> Priority: ' + task.priority + '<br><i class="tiny material-icons">label_outline</i> Type: ' + task.type + '<br><i class="tiny material-icons">schedule</i> Deadline: ' + task.deadline + '</p></div></div></div></div>')
+           })
           })
-        })
+
       </script>
 
 
