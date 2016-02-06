@@ -11,9 +11,20 @@
     </head>
 
     <body>
+
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+      <nav>
+      <div class="nav-wrapper">
+      <ul id="navbar" class="right hide-on-med-and-down">
+        <li><a href='index.html' style="font-size:20px">Resume</a></li>
+        <li><a href="subscribe.html" style="font-size:20px">Subscribe</a></li>
+        <li><a href="cities.html" style="font-size:20px">Cities</a></li>
+            </ul>
+          </div>
+      </nav>
 
       <div class="container">
 
@@ -40,18 +51,32 @@
       </div>
 
       <script>
+        var ref = new Firebase('https://ankr6095-book1.firebaseio.com/')
+        var emailsRef = ref.child('resume/Subscribers')
 
+        // and populate "#emails" with these email addresses
         $('#submit').click(function(){
           console.log('the submit button is clicked')
 
-          // TODO: add code to submit an email address to your own Firebase
+          var email = $('#email').val()
+          console.log('the email is', email)
 
+          // TODO: study why push() and set() are both necessary
+          var newEmail = emailsRef.push()
+          newEmail.set(email)
         })
 
-
-        // TODO: add code to pull emaill addresses from your own Firebase,
-        // and populate "#emails" with these email addresses
-
+        // Grab the subscribers information
+        
+        ref.child('resume/Subscribers').on('value', function(snapshot){
+          var subs = snapshot.val()
+          $('#emails').empty()
+          for( var key in subs){ 
+            sub = subs[key];
+            $('#emails').append('<li class="collection-item"><p>' + sub + '</p></li>')
+          }
+        })
+        
 
       </script>
     </body>

@@ -6,9 +6,17 @@
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+      <!-- custom css for the website -->
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     </head>
 
     <body>
@@ -16,12 +24,28 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
+      <nav>
+            <div class="nav-wrapper">
+            <ul id="navbar" class="right hide-on-med-and-down">
+              <li><a href='index.html' style="font-size:20px">Resume</a></li>
+              <li><a href="subscribe.html" style="font-size:20px">Subscribe</a></li>
+              <li><a href="cities.html" style="font-size:20px">Cities</a></li>
+                  </ul>
+                </div>
+            </nav>
+
       <div class="container">
-        <h1>Andrew Krodinger</h1>
-        <br>
-      </div>
-
-
+        <div row style="margin-top:10px">
+          <div class="col-md-10">
+            <h1 style="font-size:600%" >Andrew Krodinger</h1>
+          </div>
+          <div class="col-md-2">
+            <div class="row about-me-face">
+                <img src="img/me.jpg" class="img-circle" alt="Cinque Terre" width="150" height="150">
+            </div>
+          </div>
+        </div>
+        <div row>
       <div class="container">
         <h2>Education</h2>
         <ul class="collection" id="education">
@@ -39,6 +63,8 @@
       <script>
         // create a firebase reference to the root
         var ref = new Firebase('https://ankr6095-book1.firebaseio.com/')
+        var refTeam = new Firebase('https://ucdd2bookuno.firebaseio.com')
+
         ref.child('bio/education').once('value', function(snapshot){
           var education = snapshot.val()
           education.forEach(function(edu){
