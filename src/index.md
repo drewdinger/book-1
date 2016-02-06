@@ -10,7 +10,6 @@ Everything I've learned from UCDD 2 - Spring 2016.
 * [ToDos](apps/todos/)
 * [Resume](apps/resume/)
 * [Parking](apps/parking/)
-=======
 
 ## Learning
 * [Week 4](learning/week4) <span class="chip red">NEW</span>
