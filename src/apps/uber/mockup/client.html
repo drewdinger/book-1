@@ -1,1 +1,118 @@
-TODO
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Client</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+    
+    <nav>
+	  <div class="nav-wrapper teal lighten-2">
+		<a id="name" href="index.html" class="brand-logo center">RIDESKI</a>
+		<ul id="navbar" class="right hide-on-med-and-down">
+          <li><a href="admin.html">Admin</a></li>
+          <li><a href="client.html">Client</a></li>
+		</ul>
+	  </div>
+	</nav>
+    
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large teal lighten-2" href="#map-mockup">
+        <i class="large material-icons">language</i>
+      </a>
+      <ul>
+        <li><a class="btn-floating teal lighten-1" href="index.html"><i class="material-icons">assignment</i></a></li>
+        <li><a class="btn-floating teal lighten-1" href="admin.html"><i class="material-icons">perm_identity</i></a></li>
+        <li><a class="btn-floating teal lighten-1" href="client.html"><i class="material-icons">grade</i></a></li>
+      </ul>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <h3 class="center-align">Client Input</h3>
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+          <label for="departTime">Departure Time</label>
+          <p class="range-field">
+            <input type="range" id="test5" min="5" max="10" />
+          </p>
+          <label for="departTime">Return Time</label>
+          <p class="range-field">
+            <input type="range" id="test6" min="1" max="9" />
+          </p>
+          <div class="input-field col s12">
+            <input id="passengers" type="text" class="validate">
+            <label for="passengers">Number of Passengers</label>
+          </div>
+          <div class="input-field col s12">
+            <select>
+              <option value="" disabled selected>Choose ski area</option>
+              <option value="1">Winter Park</option>
+              <option value="2">Copper</option>
+              <option value="3">Keystone</option>
+              <option value="4">Vail</option>
+              <option value="5">Breckenridge</option>
+              <option value="6">Loveland</option>
+              <option value="7">Eldora</option>
+              <option value="8">A-Basin</option>
+            </select>
+            <label>Select Destination</label>
+          </div>
+          <a class="waves-effect waves-light btn">Submit</a>
+        </form>
+      </div>
+      <br/>
+      <h1 id="map-mockup">RIDESKI Map</h1>
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img src="map-mock.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $('select').material_select();
+        
+        
+        /*var slider1 = document.getElementById('departTime');
+        noUiSlider.create(slider1, {
+         start: [6, 6.5],
+         connect: true,
+         step: .1,
+         range: {
+           'min': 5,
+           'max': 10
+         },
+         format: wNumb({
+           decimals: 0
+         })
+        });*/
+              
+      });
+    </script>
+    
+    
+  </body>
+</html>

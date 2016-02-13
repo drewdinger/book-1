@@ -1,8 +1,9 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
-  center: [37.78, -122.41], // San Francisco
-  providers: [],
-  user: null
+  user: null,
+  drivers: [],
+  riders: [],
+  center: [39.73, -104.98]
 }
 
 // a single 'handlers' object that holds all the actions of your entire app
@@ -17,24 +18,30 @@ function render(){
         data={data}
         actions={actions}/>,
     $('#app-container').get(0)
-  )
+  );
 }
+
+render();
 
 //
 // DATA
 //
+  
+var root = new Firebase('https://rideski.firebaseio.com/');
+var driverRef = root.child('Drivers');
+driverRef.on('value', function(snapshot) {
+  data.drivers = snapshot.val();
+  render();
+});
 
-var firebaseRef = new Firebase('https://ucdd2-book.firebaseio.com/uber')
+var riderRef = root.child('Client');
+riderRef.on('value', function(snapshot) {
+  data.riders = snapshot.val();
+  render();
+});
 
-// Real-time Data (load constantly on changes)
-firebaseRef.child('providers')
-  .on('value', function(snapshot){
+//var root = new Firebase('https://ucdd2-book.firebaseio.com/uber');
 
-    data.providers = _.values(snapshot.val())
-
-    render()
-
-  })
 
 //
 // ACTIONS
@@ -44,17 +51,17 @@ firebaseRef.child('providers')
 actions.setUserLocation = function(latlng){
 
   if (data.user){
-    firebaseRef
+    root
       .child('users')
       .child(data.user.username)
       .child('pos')
-      .set([latlng.lat, latlng.lng])
+      .set([latlng.lat, latlng.lng]);
   }
 }
 
 actions.login = function(){
 
-  firebaseRef.authWithOAuthPopup("github", function(error, authData){
+  root.authWithOAuthPopup("github", function(error, authData){
 
     // handle the result of the authentication
     if (error) {
@@ -69,18 +76,18 @@ actions.login = function(){
         id: authData.github.id,
         status: 'online',
         pos: data.center  // position, default to the map center
-      }
+      };
 
-      var userRef = firebaseRef.child('users').child(user.username)
+      var userRef = root.child('users').child(user.username);
 
       // subscribe to the user data
       userRef.on('value', function(snapshot){
-        data.user = snapshot.val()
-        render()
-      })
+        data.user = snapshot.val();
+        render();
+      });
 
       // set the user data
-      userRef.set(user)
+      userRef.set(user);
 
     }
   })
@@ -91,21 +98,21 @@ actions.logout = function(){
 
   if (data.user){
 
-    firebaseRef.unauth()
+    root.unauth();
 
-    var userRef = firebaseRef
+    var userRef = root
       .child('users')
-      .child(data.user.username)
+      .child(data.user.username);
 
     // unsubscribe to the user data
-    userRef.off()
+    userRef.off();
 
     // set the user's status to offline
-    userRef.child('status').set('offline')
+    userRef.child('status').set('offline');
 
-    data.user = null
+    data.user = null;
 
-    render()
+    render();
 
   }
 
