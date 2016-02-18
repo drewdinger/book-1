@@ -61,7 +61,7 @@
       function loadPage() {
         if (window.location.hash === '#resume') {
           var ref = new Firebase('https://ankr6095-book1.firebaseio.com/');
-          ref.child('bio/hard_skills/language').on('value', function(snapshot){
+          ref.child('bio/hard_skills').on('value', function(snapshot){
             var skills = snapshot.val();
             ReactDOM.render(
               <MyComponents.SkillList skills={skills}/>,

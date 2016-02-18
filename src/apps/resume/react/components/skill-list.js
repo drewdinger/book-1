@@ -1,29 +1,33 @@
 MyComponents.Skill = React.createClass({
 
   render: function() {
+    var skill = this.props.skill;
     return (
-      <div className="card blue darken-3">
-        <div className="card-content white-text">
-          <h5>{this.props.hard_skill}</h5>
-          <li className="collection-item">{this.props.hard_skill.type}</li>
+      <li className="card hoverable green accent-1">
+        <div className="card-content center-align black-text">
+          <span className="card-title">{skill.language}</span>
         </div>
-      </div>
+      </li>
     );
   }
 
 });
 
-
 MyComponents.SkillList = React.createClass({
   render: function() {
 
-    var skillElements = this.props.hard_skills.map(function(s,i){
+    var skillElements = this.props.skills.map(function(s,i){
       return <MyComponents.Skill skill={s} key={i}/>
     })
 
     return (
-      <div className="card blue darken-4">
+      <div className="row">
+        <h3 className="center-align">Skills</h3>
+        <ul>
+
         {skillElements}
+
+        </ul>
       </div>
     );
   }
