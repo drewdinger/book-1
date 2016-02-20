@@ -1,19 +1,19 @@
 class AppRiders extends React.Component {
   render(){
     return <div>
-      <MyComponents.NavBar actions={this.props.actions}/>
+      <MyComponents.NavBar actions={this.props.actions} user={this.props.data.user}/>
       <div className="container main">
         <div className="card">
           <MyComponents.User
               user={this.props.data.user}
-              loginAction={this.props.actions.login}
-              logoutAction={this.props.actions.logout}/>
+              actions={this.props.actions}/>
         </div>
         <div className="row">
           <div className="col s6">
             <div className="card">
               <MyComponents.Rider
                   user={this.props.data.user}
+                  drivers={this.props.data.drivers}
                   loginAction={this.props.actions.login}
                   logoutAction={this.props.actions.logout}/>
             </div>

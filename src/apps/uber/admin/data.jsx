@@ -38,3 +38,9 @@ riderRef.on('value', function(snapshot) {
   data.riders = snapshot.val();
   render();
 });
+
+var userRef = root.child('users');
+userRef.on('value', function(snapshot) {
+  data.users = snapshot.val();
+  render();
+});
